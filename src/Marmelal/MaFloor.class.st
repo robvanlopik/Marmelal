@@ -1,0 +1,62 @@
+Class {
+	#name : #MaFloor,
+	#superclass : #Object,
+	#instVars : [
+		'temp',
+		'setpoint',
+		'ssrState',
+		'power',
+		'name'
+	],
+	#category : #Marmelal
+}
+
+{ #category : #accessing }
+MaFloor >> name [
+	^ name
+]
+
+{ #category : #accessing }
+MaFloor >> name: anObject [
+	name := anObject
+]
+
+{ #category : #accessing }
+MaFloor >> power [
+	^ power
+]
+
+{ #category : #accessing }
+MaFloor >> power: anObject [
+	power := anObject
+]
+
+{ #category : #accessing }
+MaFloor >> setpoint [
+	^ setpoint
+]
+
+{ #category : #accessing }
+MaFloor >> setpoint: anObject [
+	setpoint := anObject
+]
+
+{ #category : #accessing }
+MaFloor >> ssrState [
+	^ ssrState
+]
+
+{ #category : #accessing }
+MaFloor >> ssrState: anObject [
+	ssrState := anObject
+]
+
+{ #category : #accessing }
+MaFloor >> temp [
+	^ temp
+]
+
+{ #category : #accessing }
+MaFloor >> temp: anObject [
+	temp := anObject
+]
