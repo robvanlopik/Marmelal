@@ -36,11 +36,11 @@ MaHouse >> initialize [
 	floors at: 1 put: (MaFloor new name: 'keuken').
 	floors at: 2 put: (MaFloor new name: 'zitkamer').
 	floors at: 3 put: (MaFloor new name: 'eetkamer').
-	floors at: 4 put: (MaFloor new name: 'clavecimbel').
+	floors at: 4 put: (MaFloor new name: 'plateau').
 	floors at: 5 put: (MaFloor new name: 'slaapkamer').
 	
 	ssrs := Array new: 3.
-	ssrs at: 1 put: (MaSSR new name: 'hal').
+	ssrs at: 1 put: (MaSSR new name: 'kantoor').
 	ssrs at: 2 put: (MaSSR new name: 'badkamer').
 	ssrs at: 3 put: (MaSSR new name: 'boiler').
 ]

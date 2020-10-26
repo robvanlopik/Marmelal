@@ -7,7 +7,6 @@ Class {
 		'diner',
 		'sleep',
 		'harpsi',
-		'dinner',
 		'plateau',
 		'hall',
 		'bath',
@@ -38,16 +37,6 @@ MaHousePresenter >> diner [
 { #category : #accessing }
 MaHousePresenter >> diner: anObject [
 	diner := anObject
-]
-
-{ #category : #accessing }
-MaHousePresenter >> dinner [
-	^ dinner
-]
-
-{ #category : #accessing }
-MaHousePresenter >> dinner: anObject [
-	dinner := anObject
 ]
 
 { #category : #accessing }
@@ -109,4 +98,9 @@ MaHousePresenter >> sleep [
 { #category : #accessing }
 MaHousePresenter >> sleep: anObject [
 	sleep := anObject
+]
+
+{ #category : #'updating screen' }
+MaHousePresenter >> updateAll [
+	"update al fields of all subpresenters"
 ]
