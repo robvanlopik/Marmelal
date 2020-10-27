@@ -18,6 +18,8 @@ Class {
 { #category : #specs }
 MaHousePresenter class >> defaultSpec [
 	^SpGridLayout new 
+	beRowHomogeneous;
+	beColumnHomogeneous ;
 	add: #bath at: 1@1;
 	add: #sitting at: 2@1;
 	add: #plateau at: 3@1;
@@ -61,6 +63,9 @@ MaHousePresenter >> initializePresenters [
 	currents := self instantiate: MaCurrentPresenter.
 	
 	kitchen name label: 'keuken'.
+	kitchen temp label: '22.3'.
+	kitchen setPoint label: '20'.
+	kitchen ssrState color: Color green.
 	sitting name label: 'zitkamer'.
 	diner name label: 'eetkamer'.
 	plateau name label: 'plateau'.
@@ -68,6 +73,13 @@ MaHousePresenter >> initializePresenters [
 	hall name label: 'kantoor'.
 	bath name label: 'badkamer'.
 	currents name label: 'stromen(A)'.
+]
+
+{ #category : #initialization }
+MaHousePresenter >> initializeWindow: aWindowPresenter [
+	aWindowPresenter 	
+		title: 'Bulhe';
+		initialExtent: 700@350
 ]
 
 { #category : #accessing }

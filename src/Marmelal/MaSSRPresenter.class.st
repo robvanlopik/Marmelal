@@ -21,9 +21,12 @@ MaSSRPresenter class >> defaultSpec [
 { #category : #initialization }
 MaSSRPresenter >> initializePresenters [ 
 	name := self newLabel.
-	ssrState := self newLabel.
-	setPoint := self newLabel.
+	ssrState := self newMorph.
+	setPoint := self newMorph.
 	
+	ssrState morph: CircleMorph new .
+	setPoint morph: CircleMorph new.
+
 ]
 
 { #category : #accessing }

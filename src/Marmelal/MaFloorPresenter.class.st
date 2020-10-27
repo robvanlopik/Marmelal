@@ -13,10 +13,13 @@ Class {
 { #category : #specs }
 MaFloorPresenter class >> defaultSpec [ 
 	^SpBoxLayout newVertical
-		add: #name;
-		add: #temp;
-		add: #setPoint;
-		add: #ssrState
+	beHomogeneous;
+		add: #name height: 30 ;
+		add: #temp height: 30;
+		add: #setPoint height: 30;
+		add: #ssrState height: 30  ;
+		yourself
+
 ]
 
 { #category : #initialization }
@@ -24,7 +27,8 @@ MaFloorPresenter >> initializePresenters [
 	name := self newLabel.
 	temp := self newLabel.
 	setPoint := self newLabel.
-	ssrState := self newLabel.
+	ssrState := self newMorph.
+	ssrState morph: CircleMorph new
 ]
 
 { #category : #accessing }

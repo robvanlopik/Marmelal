@@ -39,3 +39,8 @@ MaHouseApp >> readAllData [
 	result doWithIndex: [  :r :i | ( house floors at: i) temp: r  ].
 	
 ]
+
+{ #category : #running }
+MaHouseApp >> start [ 
+	(self new: MaHousePresenter) openWithSpec
+]
