@@ -112,7 +112,31 @@ MaHousePresenter >> sleep: anObject [
 	sleep := anObject
 ]
 
-{ #category : #'updating screen' }
-MaHousePresenter >> updateAll [
-	"update al fields of all subpresenters"
+{ #category : #initialization }
+MaHousePresenter >> updatePresenter [
+	| house |
+	house := self application house.
+	"floor temps "
+	kitchen temp label: (house floors at: 1) temp printString.
+	sitting temp label: (house floors at: 2) temp printString.
+	diner temp label: (house floors at: 3) temp printString.
+	plateau temp label: (house floors at: 4) temp printString.
+	sleep temp label: (house floors at: 1) temp printString.
+	"floor setpoints"
+	kitchen setPoint label: (house floors at: 1) setpoint printString.
+	sitting setPoint label: (house floors at: 2) setpoint printString.
+	diner setPoint  label: (house floors at: 3) setpoint printString.
+	plateau setPoint  label: (house floors at: 4) setpoint printString.
+	sleep setPoint label: (house floors at: 1) setpoint printString.
+	"floor ssr states"
+	kitchen ssrState color: (house floors at: 1) ssrStateAsColor .
+	sitting  ssrState color: (house floors at: 2) ssrStateAsColor .
+	diner ssrState color: (house floors at: 3) ssrStateAsColor .
+	plateau ssrState color: (house floors at: 4) ssrStateAsColor .
+	sleep ssrState color: (house floors at: 5) ssrStateAsColor .
+	
+	"currents"
+	currents phaseA label: (house currents at: 1) printString.
+	currents phaseB label: ( house currents at: 2 )printString.
+	currents phaseC label: (house currents at: 3) printString.
 ]

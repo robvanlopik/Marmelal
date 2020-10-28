@@ -3,10 +3,16 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'floors',
-		'ssrs'
+		'ssrs',
+		'currents'
 	],
 	#category : #Marmelal
 }
+
+{ #category : #accessing }
+MaHouse >> currents [ 
+	^currents
+]
 
 { #category : #examples }
 MaHouse >> example1 [
@@ -43,17 +49,8 @@ MaHouse >> initialize [
 	ssrs at: 1 put: (MaSSR new name: 'kantoor').
 	ssrs at: 2 put: (MaSSR new name: 'badkamer').
 	ssrs at: 3 put: (MaSSR new name: 'boiler').
-]
-
-{ #category : #'as yet unclassified' }
-MaHouse >> show1 [
-	| view |
 	
-	view := MultiColumnListPresenter new.
-	view items: self floors;
-		displayBlock: [ :each | { each name . each temp asString . each setpoint asString . each ssrState} ].
-	view openWithSpec
-	
+	currents := Array new: 3 withAll: 0.
 ]
 
 { #category : #accessing }

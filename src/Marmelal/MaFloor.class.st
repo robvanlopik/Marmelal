@@ -51,6 +51,14 @@ MaFloor >> ssrState: anObject [
 	ssrState := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+MaFloor >> ssrStateAsColor [
+	(ssrState = #A) ifTrue: [ ^Color red ].
+	(ssrState = #U) ifTrue: [  ^Color green ].
+	(ssrState = #O) ifTrue: [  ^Color orange ].
+	^Color gray .
+]
+
 { #category : #accessing }
 MaFloor >> temp [
 	^ temp

@@ -29,6 +29,14 @@ MaSSR >> setpoint: anObject [
 	setpoint := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+MaSSR >> setpointAsColor [
+	(setpoint = 1) ifTrue: [ ^Color red ].
+	(setpoint = 0) ifTrue: [  ^Color green ].
+	
+	^Color gray .
+]
+
 { #category : #accessing }
 MaSSR >> state [
 	^ state
@@ -37,4 +45,12 @@ MaSSR >> state [
 { #category : #accessing }
 MaSSR >> state: anObject [
 	state := anObject
+]
+
+{ #category : #'as yet unclassified' }
+MaSSR >> stateAsColor [
+	(state = #A) ifTrue: [ ^Color red ].
+	(state = #U) ifTrue: [  ^Color green ].
+	(state = #O) ifTrue: [  ^Color orange ].
+	^Color gray .
 ]

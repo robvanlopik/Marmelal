@@ -16,6 +16,11 @@ MaHouseApp >> communicateOnPort: aPort baudRate: aNumber [
 	communication := MaHomeComms onPort: aPort baudRate: aNumber
 ]
 
+{ #category : #accessing }
+MaHouseApp >> house [ 
+	^house
+]
+
 { #category : #initialization }
 MaHouseApp >> initialize [ 
 	super initialize.
@@ -24,9 +29,6 @@ MaHouseApp >> initialize [
 	scheduler start.
 	
 	house := MaHouse new.
-	
-	housePresenter := (self newPresenter: MaHousePresenter) openWithSpec.
-	
 
 ]
 

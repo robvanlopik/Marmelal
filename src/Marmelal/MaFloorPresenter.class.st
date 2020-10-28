@@ -14,10 +14,13 @@ Class {
 MaFloorPresenter class >> defaultSpec [ 
 	^SpBoxLayout newVertical
 	beHomogeneous;
-		add: #name height: 30 ;
+		add: (SpBoxLayout newHorizontal
+				hAlignCenter;
+				add: #name height: 30 ;
+				yourself) height: 30;
 		add: #temp height: 30;
 		add: #setPoint height: 30;
-		add: #ssrState width: 30  ;
+		add: #ssrState expand: false  ;
 		yourself
 
 ]

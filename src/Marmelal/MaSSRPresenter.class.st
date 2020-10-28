@@ -12,9 +12,10 @@ Class {
 { #category : #specs }
 MaSSRPresenter class >> defaultSpec [
 		^SpBoxLayout newVertical
-		add: #name;
-		add: #ssrState;
-		add: #setPoint.
+		add: #name height: 30;
+		add: #ssrState height: 30;
+		add: #setPoint height: 30;
+		yourself.
 		
 ]
 
@@ -24,8 +25,8 @@ MaSSRPresenter >> initializePresenters [
 	ssrState := self newMorph.
 	setPoint := self newMorph.
 	
-	ssrState morph: CircleMorph new .
-	setPoint morph: CircleMorph new.
+	ssrState morph: MaIndicator new.
+	setPoint	morph: MaIndicator new.
 
 ]
 
