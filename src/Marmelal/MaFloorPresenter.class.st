@@ -17,7 +17,7 @@ MaFloorPresenter class >> defaultSpec [
 		add: #name height: 30 ;
 		add: #temp height: 30;
 		add: #setPoint height: 30;
-		add: #ssrState height: 30  ;
+		add: #ssrState width: 30  ;
 		yourself
 
 ]
@@ -28,7 +28,7 @@ MaFloorPresenter >> initializePresenters [
 	temp := self newLabel.
 	setPoint := self newLabel.
 	ssrState := self newMorph.
-	ssrState morph: CircleMorph new
+	ssrState morph: MaIndicator new
 ]
 
 { #category : #accessing }
