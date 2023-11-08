@@ -63,5 +63,6 @@ NTCReader >> weerstandOpPin: pinNr [
 	| meting |
 	
 	meting := self doeMetingOpPin: pinNr.
-	^vasteWeerstand / (( refSpanning  / meting) - 1)
+	^vasteWeerstand / (( refSpanning  / meting) - 1).
+	
 ]
