@@ -39,6 +39,22 @@ MaSetpointPresenter >> connectPresenters [
 	
 ]
 
+{ #category : #layout }
+MaSetpointPresenter >> defaultLayout [
+	^SpBoxLayout newVertical
+		add: #graph height: 400;
+		add: 
+		(SpBoxLayout newHorizontal
+		add: #left;
+		add: #up;
+		add: #down;
+		add: #right;
+		add: #ok;
+		add: #quit;
+		yourself);
+		yourself
+]
+
 { #category : #accessing }
 MaSetpointPresenter >> down [
 	^ down

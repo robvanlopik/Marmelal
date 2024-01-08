@@ -25,8 +25,8 @@ MaHouseApp >> house [
 MaHouseApp >> initialize [ 
 	super initialize.
 	
-	scheduler := TaskScheduler new.
-	scheduler start.
+"	scheduler := TaskScheduler new.
+	scheduler start. "
 	
 	house := MaHouse new.
 
@@ -44,5 +44,5 @@ MaHouseApp >> readAllData [
 
 { #category : #running }
 MaHouseApp >> start [ 
-	(self new: MaHousePresenter) openWithSpec
+	(self new: MaHousePresenter) open
 ]

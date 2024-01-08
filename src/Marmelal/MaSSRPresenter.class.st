@@ -19,6 +19,16 @@ MaSSRPresenter class >> defaultSpec [
 		
 ]
 
+{ #category : #layout }
+MaSSRPresenter >> defaultLayout [
+		^SpBoxLayout newVertical
+		add: #name height: 30;
+		add: #ssrState height: 30;
+		add: #setPoint height: 30;
+		yourself.
+		
+]
+
 { #category : #initialization }
 MaSSRPresenter >> initializePresenters [ 
 	name := self newLabel.

@@ -19,6 +19,15 @@ MaCurrentPresenter class >> defaultSpec [
 		add: #phaseC
 ]
 
+{ #category : #layout }
+MaCurrentPresenter >> defaultLayout [
+	^SpBoxLayout newVertical 
+		add: #name;
+		add: #phaseA;
+		add: #phaseB;
+		add: #phaseC
+]
+
 { #category : #initialization }
 MaCurrentPresenter >> initializePresenters [ 
 	name := self newLabel.

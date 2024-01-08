@@ -31,6 +31,22 @@ MaHousePresenter class >> defaultSpec [
 	yourself
 ]
 
+{ #category : #layout }
+MaHousePresenter >> defaultLayout [
+	^SpGridLayout new 
+	beRowHomogeneous;
+	beColumnHomogeneous ;
+	add: #bath at: 1@1;
+	add: #sitting at: 2@1;
+	add: #plateau at: 3@1;
+	add: #hall at: 4@1;
+	add: #sleep at: 1@2;
+	add: #kitchen at: 2@2;
+	add: #currents at: 3@2;
+	add: #diner at: 4@2;
+	yourself
+]
+
 { #category : #accessing }
 MaHousePresenter >> diner [
 	^ diner

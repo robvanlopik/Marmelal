@@ -25,6 +25,21 @@ MaFloorPresenter class >> defaultSpec [
 
 ]
 
+{ #category : #layout }
+MaFloorPresenter >> defaultLayout [
+	^SpBoxLayout newVertical
+	beHomogeneous;
+		add: (SpBoxLayout newHorizontal
+				hAlignCenter;
+				add: #name height: 30 ;
+				yourself) height: 30;
+		add: #temp height: 30;
+		add: #setPoint height: 30;
+		add: #ssrState expand: false  ;
+		yourself
+
+]
+
 { #category : #initialization }
 MaFloorPresenter >> initializePresenters [ 
 	name := self newLabel.
