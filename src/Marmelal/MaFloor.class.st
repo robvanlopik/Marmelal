@@ -6,10 +6,21 @@ Class {
 		'setpoint',
 		'ssrState',
 		'power',
-		'name'
+		'name',
+		'ename'
 	],
 	#category : #Marmelal
 }
+
+{ #category : #accessing }
+MaFloor >> ename [
+	^ename
+]
+
+{ #category : #accessing }
+MaFloor >> ename: aString [
+	ename := aString
+]
 
 { #category : #accessing }
 MaFloor >> name [

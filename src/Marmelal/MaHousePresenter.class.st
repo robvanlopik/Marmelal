@@ -137,13 +137,13 @@ MaHousePresenter >> updatePresenter [
 	sitting temp label: (house floors at: 2) temp printString.
 	diner temp label: (house floors at: 3) temp printString.
 	plateau temp label: (house floors at: 4) temp printString.
-	sleep temp label: (house floors at: 1) temp printString.
+	sleep temp label: (house floors at: 5) temp printString.
 	"floor setpoints"
 	kitchen setPoint label: (house floors at: 1) setpoint printString.
 	sitting setPoint label: (house floors at: 2) setpoint printString.
 	diner setPoint  label: (house floors at: 3) setpoint printString.
 	plateau setPoint  label: (house floors at: 4) setpoint printString.
-	sleep setPoint label: (house floors at: 1) setpoint printString.
+	sleep setPoint label: (house floors at: 5) setpoint printString.
 	"floor ssr states"
 	kitchen ssrState color: (house floors at: 1) ssrStateAsColor .
 	sitting  ssrState color: (house floors at: 2) ssrStateAsColor .

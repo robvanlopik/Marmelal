@@ -5,7 +5,9 @@ Class {
 		'scheduler',
 		'house',
 		'communication',
-		'housePresenter'
+		'housePresenter',
+		'mqttListener',
+		'mqttBroker'
 	],
 	#category : #Marmelal
 }
@@ -17,8 +19,38 @@ MaHouseApp >> communicateOnPort: aPort baudRate: aNumber [
 ]
 
 { #category : #accessing }
+MaHouseApp >> communication [
+
+	^ communication
+]
+
+{ #category : #accessing }
+MaHouseApp >> communication: anObject [
+
+	communication := anObject
+]
+
+{ #category : #accessing }
 MaHouseApp >> house [ 
 	^house
+]
+
+{ #category : #accessing }
+MaHouseApp >> house: anObject [
+
+	house := anObject
+]
+
+{ #category : #accessing }
+MaHouseApp >> housePresenter [
+
+	^ housePresenter
+]
+
+{ #category : #accessing }
+MaHouseApp >> housePresenter: anObject [
+
+	housePresenter := anObject
 ]
 
 { #category : #initialization }
@@ -32,6 +64,30 @@ MaHouseApp >> initialize [
 
 ]
 
+{ #category : #accessing }
+MaHouseApp >> mqttBroker [
+
+	^ mqttBroker
+]
+
+{ #category : #accessing }
+MaHouseApp >> mqttBroker: anObject [
+
+	mqttBroker := anObject
+]
+
+{ #category : #accessing }
+MaHouseApp >> mqttListener [
+
+	^ mqttListener
+]
+
+{ #category : #accessing }
+MaHouseApp >> mqttListener: anObject [
+
+	mqttListener := anObject
+]
+
 { #category : #'as yet unclassified' }
 MaHouseApp >> readAllData [
 	"read all data (currents, setpoint temps ssrs and store them in the correct places"
@@ -40,6 +96,18 @@ MaHouseApp >> readAllData [
 	result := communication temperatures.
 	result doWithIndex: [  :r :i | ( house floors at: i) temp: r  ].
 	
+]
+
+{ #category : #accessing }
+MaHouseApp >> scheduler [
+
+	^ scheduler
+]
+
+{ #category : #accessing }
+MaHouseApp >> scheduler: anObject [
+
+	scheduler := anObject
 ]
 
 { #category : #running }

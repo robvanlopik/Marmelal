@@ -25,6 +25,17 @@ MaHouse >> example1 [
 	(self floors at: 5) temp: 17; setpoint: 16; ssrState: 'A'.
 ]
 
+{ #category : #'as yet unclassified' }
+MaHouse >> floorENamed: aString [
+"return the floor with english name aString"
+	^floors detect: [ :f | f ename = aString ]
+]
+
+{ #category : #'as yet unclassified' }
+MaHouse >> floorNamed: aString [
+	^ floors detect: [  :f |f name = aString ]
+]
+
 { #category : #accessing }
 MaHouse >> floors [
 	^ floors
@@ -44,6 +55,12 @@ MaHouse >> initialize [
 	floors at: 3 put: (MaFloor new name: 'eetkamer').
 	floors at: 4 put: (MaFloor new name: 'plateau').
 	floors at: 5 put: (MaFloor new name: 'slaapkamer').
+	"english names used by MQTT"
+	(floors at: 1) ename: 'kitchen'.
+	(floors at: 2) ename: 'living'.
+	(floors at: 3) ename: 'dining'.
+	(floors at: 4) ename: 'plateau'.
+	(floors at: 5) ename: 'sleeping'.
 	
 	ssrs := Array new: 3.
 	ssrs at: 1 put: (MaSSR new name: 'kantoor').
