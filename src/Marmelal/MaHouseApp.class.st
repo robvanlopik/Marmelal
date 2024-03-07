@@ -89,6 +89,16 @@ MaHouseApp >> mqttListener: anObject [
 ]
 
 { #category : #'as yet unclassified' }
+MaHouseApp >> processMessage: anMQTTMessage [
+	"set the  tempeature of the floor in the topic"
+	| floor temp |
+	
+	floor := anMQTTMessage topic copyReplaceAll: 'floors/' with: '' .
+	temp := anMQTTMessage message.
+	(house floorENamed: floor) temp: temp.
+]
+
+{ #category : #'as yet unclassified' }
 MaHouseApp >> readAllData [
 	"read all data (currents, setpoint temps ssrs and store them in the correct places"
 	| tempArray result |
@@ -113,4 +123,13 @@ MaHouseApp >> scheduler: anObject [
 { #category : #running }
 MaHouseApp >> start [ 
 	(self new: MaHousePresenter) open
+]
+
+{ #category : #'as yet unclassified' }
+MaHouseApp >> startMQTTListener [
+	mqttListener := MQTTClient url: mqttBroker.
+	mqttListener timeout: 70.
+	mqttListener open.
+	mqttListener subscribeToTopic: 'floors/+'.
+	[mqttListener runWith: [ :message | self processMessage: message] ] forkNamed: 'MQTTLoop'
 ]
