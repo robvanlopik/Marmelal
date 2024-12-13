@@ -12,7 +12,7 @@ Class {
 		'bath',
 		'currents'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Spec'
 }
 
 { #category : #specs }

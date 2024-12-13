@@ -6,7 +6,7 @@ Class {
 		'setpoint',
 		'name'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Core'
 }
 
 { #category : #accessing }

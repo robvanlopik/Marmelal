@@ -7,7 +7,7 @@ Class {
 		'phaseB',
 		'phaseC'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Spec'
 }
 
 { #category : #specs }

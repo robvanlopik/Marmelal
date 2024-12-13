@@ -5,7 +5,7 @@ Class {
 		'house',
 		'floormorphs'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Spec'
 }
 
 { #category : #initialization }

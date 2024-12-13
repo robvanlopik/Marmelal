@@ -3,10 +3,13 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'floors',
+		'rooms',
 		'ssrs',
-		'currents'
+		'currents',
+		'aircos',
+		'exterior'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Core'
 }
 
 { #category : #accessing }

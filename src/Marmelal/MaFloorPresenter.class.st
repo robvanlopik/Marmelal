@@ -7,7 +7,7 @@ Class {
 		'setPoint',
 		'ssrState'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Spec'
 }
 
 { #category : #specs }

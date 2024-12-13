@@ -10,7 +10,7 @@ Class {
 		'ok',
 		'quit'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Spec'
 }
 
 { #category : #specs }

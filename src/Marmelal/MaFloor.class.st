@@ -9,7 +9,7 @@ Class {
 		'name',
 		'ename'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Core'
 }
 
 { #category : #accessing }

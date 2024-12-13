@@ -1,5 +1,5 @@
 Class {
 	#name : #FloorView,
 	#superclass : #BorderedMorph,
-	#category : #Marmelal
+	#category : #'Marmelal-Spec'
 }

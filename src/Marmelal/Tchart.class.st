@@ -7,7 +7,7 @@ Class {
 		'timeLabel',
 		'tempLabel'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Spec'
 }
 
 { #category : #accessing }

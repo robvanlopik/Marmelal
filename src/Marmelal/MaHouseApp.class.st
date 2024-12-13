@@ -9,7 +9,7 @@ Class {
 		'mqttListener',
 		'mqttBroker'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Spec'
 }
 
 { #category : #'as yet unclassified' }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'tempCode'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Spec'
 }
 
 { #category : #'as yet unclassified' }

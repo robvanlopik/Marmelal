@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'port'
 	],
-	#category : #Marmelal
+	#category : #'Marmelal-Comms'
 }
 
 { #category : #'as yet unclassified' }
