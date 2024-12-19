@@ -50,6 +50,12 @@ MaHouse >> floors: anObject [
 ]
 
 { #category : #initialization }
+MaHouse >> initTimestamps [
+	"set initial timestamps to now (startup of app)"
+	self floors do: [  :floor | floor tempTimestamp: DateAndTime now]
+]
+
+{ #category : #initialization }
 MaHouse >> initialize [ 
 	super initialize.
 	floors := Array new: 5.

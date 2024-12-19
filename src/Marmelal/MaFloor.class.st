@@ -7,7 +7,8 @@ Class {
 		'ssrState',
 		'power',
 		'name',
-		'ename'
+		'ename',
+		'tempTimestamp'
 	],
 	#category : #'Marmelal-Core'
 }
@@ -78,4 +79,29 @@ MaFloor >> temp [
 { #category : #accessing }
 MaFloor >> temp: anObject [
 	temp := anObject
+]
+
+{ #category : #accessing }
+MaFloor >> tempAsString [
+	"return the temperaaure as string with one decimal placeAtEnd 
+	can also be 'not connected (- ), 'kortsluiting' of 'geen meting'
+	(based on timestamp"
+
+	temp isNil ifTrue: [ ^'?' ].
+	temp = -1 ifTrue: [ ^'open' ].
+	temp = -2 ifTrue: [ ^'kortsluiting ' ].
+	DateAndTime now - tempTimestamp > 60 minutes ifTrue: [ ^'geen updates' ].
+	^ temp printShowingDecimalPlaces: 1
+]
+
+{ #category : #accessing }
+MaFloor >> tempTimestamp [
+
+	^ tempTimestamp
+]
+
+{ #category : #accessing }
+MaFloor >> tempTimestamp: anObject [
+
+	tempTimestamp := anObject
 ]

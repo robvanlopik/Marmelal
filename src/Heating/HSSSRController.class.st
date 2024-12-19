@@ -21,6 +21,13 @@ HSSSRController >> currents [
 	^(port readByteArray: 100) allButFirst
 ]
 
+{ #category : #'instance creation' }
+HSSSRController >> on: ssrNr for: mins [
+	self switchOn: ssrNr.
+	mins minutes wait.
+	self switchOff: ssrNr
+]
+
 { #category : #accessing }
 HSSSRController >> port [
 	^port
