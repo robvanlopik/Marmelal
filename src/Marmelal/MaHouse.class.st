@@ -58,19 +58,23 @@ MaHouse >> initTimestamps [
 { #category : #initialization }
 MaHouse >> initialize [ 
 	super initialize.
-	floors := Array new: 5.
+	floors := Array new: 7.
 	floors at: 1 put: (MaFloor new name: 'keuken').
 	floors at: 2 put: (MaFloor new name: 'zitkamer').
 	floors at: 3 put: (MaFloor new name: 'eetkamer').
 	floors at: 4 put: (MaFloor new name: 'plateau').
 	floors at: 5 put: (MaFloor new name: 'slaapkamer').
+	floors at: 6 put: (MaFloor new name: 'kantoor').
+	floors at: 7 put: (MaFloor new name: 'badkamer').
 	"english names used by MQTT"
 	(floors at: 1) ename: 'kitchen'.
 	(floors at: 2) ename: 'living'.
 	(floors at: 3) ename: 'dining'.
 	(floors at: 4) ename: 'plateau'.
 	(floors at: 5) ename: 'sleeping'.
-	
+	(floors at: 6) ename: 'bath'.
+	(floors at: 7) ename: 'office'.
+	"next not necessary? Except boiler?"
 	ssrs := Array new: 3.
 	ssrs at: 1 put: (MaSSR new name: 'kantoor').
 	ssrs at: 2 put: (MaSSR new name: 'badkamer').

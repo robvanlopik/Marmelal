@@ -95,7 +95,8 @@ MaHouseApp >> processMessage: anMQTTMessage [
 	
 	floor := anMQTTMessage topic copyReplaceAll: 'floors/' with: '' .
 	temp := anMQTTMessage message.
-	(house floorENamed: floor) temp: temp.
+	(house floorENamed: floor) temp: temp asString asNumber.
+	(house floorENamed: floor) tempTimestamp: DateAndTime now
 ]
 
 { #category : #'as yet unclassified' }
