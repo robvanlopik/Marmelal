@@ -1,6 +1,6 @@
 Class {
-	#name : #MaFloor,
-	#superclass : #Object,
+	#name : 'MaFloor',
+	#superclass : 'Object',
 	#instVars : [
 		'temp',
 		'setpoint',
@@ -10,60 +10,62 @@ Class {
 		'ename',
 		'tempTimestamp'
 	],
-	#category : #'Marmelal-Core'
+	#category : 'Marmelal-Core',
+	#package : 'Marmelal',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> ename [
 	^ename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> ename: aString [
 	ename := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> power [
 	^ power
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> power: anObject [
 	power := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> setpoint [
 	^ setpoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> setpoint: anObject [
 	setpoint := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> ssrState [
 	^ ssrState
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> ssrState: anObject [
 	ssrState := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaFloor >> ssrStateAsColor [
 	(ssrState = #A) ifTrue: [ ^Color red ].
 	(ssrState = #U) ifTrue: [  ^Color green ].
@@ -71,17 +73,17 @@ MaFloor >> ssrStateAsColor [
 	^Color gray .
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> temp [
 	^ temp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> temp: anObject [
 	temp := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> tempAsString [
 	"return the temperaaure as string with one decimal placeAtEnd 
 	can also be 'not connected (- ), 'kortsluiting' of 'geen meting'
@@ -94,13 +96,13 @@ MaFloor >> tempAsString [
 	^ temp printShowingDecimalPlaces: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> tempTimestamp [
 
 	^ tempTimestamp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaFloor >> tempTimestamp: anObject [
 
 	tempTimestamp := anObject

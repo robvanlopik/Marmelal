@@ -1,18 +1,20 @@
 Class {
-	#name : #MaIndicator,
-	#superclass : #BorderedMorph,
+	#name : 'MaIndicator',
+	#superclass : 'BorderedMorph',
 	#instVars : [
 		'dot'
 	],
-	#category : #'Marmelal-Spec'
+	#category : 'Marmelal-Spec',
+	#package : 'Marmelal',
+	#tag : 'Spec'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaIndicator >> color: aColor [
 	dot color: aColor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MaIndicator >> initialize [
  	super initialize.
 	self bounds: (0@0 corner: 25@25).

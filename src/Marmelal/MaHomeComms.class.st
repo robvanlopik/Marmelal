@@ -1,20 +1,22 @@
 Class {
-	#name : #MaHomeComms,
-	#superclass : #Object,
+	#name : 'MaHomeComms',
+	#superclass : 'Object',
 	#instVars : [
 		'port'
 	],
-	#category : #'Marmelal-Comms'
+	#category : 'Marmelal-Comms',
+	#package : 'Marmelal',
+	#tag : 'Comms'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHomeComms class >> onPort: portNumber baudRate: aNumber [
 	^ self new
 		connectOnPort: portNumber baudRate: aNumber;
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHomeComms >> codeFromTemp: aTemp [
 	"convert temperature to code
 	we dont check for correct ranges!!"
@@ -26,7 +28,7 @@ MaHomeComms >> codeFromTemp: aTemp [
 	
 ]
 
-{ #category : #connection }
+{ #category : 'connection' }
 MaHomeComms >> connectOnPort: portName baudRate: aNumber [
 	"If the port cant't be open it stores nil, this way we can know if it is
 	connected by asking if port is nil.
@@ -39,7 +41,7 @@ MaHomeComms >> connectOnPort: portName baudRate: aNumber [
 
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MaHomeComms >> currentSetpoints [
 	"use the P command to retrieve the current setpoints, followed by the program Iprog (0-3)
 	Left as strings, so the user can decide what to do with the pieces"
@@ -52,7 +54,7 @@ MaHomeComms >> currentSetpoints [
 	
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MaHomeComms >> currents [
 	"return the currents of the three fases with command C"
 
@@ -67,20 +69,20 @@ MaHomeComms >> currents [
 	^c collect: [ :each | each asNumber asFloat ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MaHomeComms >> isConnected [
 
 	^port notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHomeComms >> port [
 
 	^port
 	
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 MaHomeComms >> requestForFloor: aFloorNumber program: aProgramNumber [
 	"helper to make requests return string encoding floor en prog"
 
@@ -88,7 +90,7 @@ MaHomeComms >> requestForFloor: aFloorNumber program: aProgramNumber [
 	^(aProgramNumber + (4 * aFloorNumber) + 65) asCharacter asString .
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHomeComms >> sendSetpointsForFloor: aFloornumber program: aProgramNumber codes: anArray [
 	"send data for setpoints plus checksum
 	anArray is supposed to contain 48 values 0-15"
@@ -104,7 +106,7 @@ MaHomeComms >> sendSetpointsForFloor: aFloornumber program: aProgramNumber codes
 	port nextPutAll: ('W', floorProgramCode, data, sumhi, sumlo, Character linefeed asString).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHomeComms >> sendSsrSetpointsForFloor: aFloorNumber program: aProgramNumber codes: anArray [
 	"sent new codes for the SSRs, command W"
 
@@ -118,7 +120,7 @@ MaHomeComms >> sendSsrSetpointsForFloor: aFloorNumber program: aProgramNumber co
 	port nextPutAll: 'X', progFloorCode , toSend, Character linefeed asString.
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MaHomeComms >> setpointsForFloor: aFloorNumber program: aProgramNumber [
 	"read the setpoints for a given floor and program
 	return the coded points (0-15)
@@ -138,7 +140,7 @@ MaHomeComms >> setpointsForFloor: aFloorNumber program: aProgramNumber [
 	^response
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHomeComms >> ssrSetpointsForFloor: aFloorNumber program: aProgramNumber [
 	"read the SSR setpoints/ return a bytearray of ones and zeroes"
 
@@ -156,7 +158,7 @@ MaHomeComms >> ssrSetpointsForFloor: aFloorNumber program: aProgramNumber [
 	^result
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MaHomeComms >> ssrs [
 	"read the status of the SSRs with the S command
 	answer chracterstring of the chars U(it) A(an) O(verridden)"
@@ -168,7 +170,7 @@ MaHomeComms >> ssrs [
 	^t asString
 ]
 
-{ #category : #helper }
+{ #category : 'helper' }
 MaHomeComms >> tempFromCode: aCodeNumber [
 	"cconvert a coded temp to the actual temp"
 
@@ -178,7 +180,7 @@ MaHomeComms >> tempFromCode: aCodeNumber [
 	aCodeNumber > 2 ifTrue: [ ^aCodeNumber + 12 ].
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MaHomeComms >> temperatures [
 	"The T command returns a string of 5 temperatures"
 

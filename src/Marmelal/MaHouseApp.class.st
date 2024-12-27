@@ -1,59 +1,62 @@
 Class {
-	#name : #MaHouseApp,
-	#superclass : #SpApplication,
+	#name : 'MaHouseApp',
+	#superclass : 'SpApplication',
 	#instVars : [
 		'scheduler',
 		'house',
 		'communication',
 		'housePresenter',
 		'mqttListener',
-		'mqttBroker'
+		'mqttBroker',
+		'webserver'
 	],
-	#category : #'Marmelal-Spec'
+	#category : 'Marmelal-Spec',
+	#package : 'Marmelal',
+	#tag : 'Spec'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> communicateOnPort: aPort baudRate: aNumber [
 
 	communication := MaHomeComms onPort: aPort baudRate: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> communication [
 
 	^ communication
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> communication: anObject [
 
 	communication := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> house [ 
 	^house
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> house: anObject [
 
 	house := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> housePresenter [
 
 	^ housePresenter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> housePresenter: anObject [
 
 	housePresenter := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MaHouseApp >> initialize [ 
 	super initialize.
 	
@@ -61,34 +64,35 @@ MaHouseApp >> initialize [
 	scheduler start. "
 	
 	house := MaHouse new.
+	self startWebserver
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> mqttBroker [
 
 	^ mqttBroker
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> mqttBroker: anObject [
 
 	mqttBroker := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> mqttListener [
 
 	^ mqttListener
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> mqttListener: anObject [
 
 	mqttListener := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> processMessage: anMQTTMessage [
 	"set the  tempeature of the floor in the topic"
 	| floor temp |
@@ -99,7 +103,7 @@ MaHouseApp >> processMessage: anMQTTMessage [
 	(house floorENamed: floor) tempTimestamp: DateAndTime now
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> readAllData [
 	"read all data (currents, setpoint temps ssrs and store them in the correct places"
 	| tempArray result |
@@ -109,28 +113,39 @@ MaHouseApp >> readAllData [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> scheduler [
 
 	^ scheduler
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> scheduler: anObject [
 
 	scheduler := anObject
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MaHouseApp >> start [ 
 	(self new: MaHousePresenter) open
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> startMQTTListener [
 	mqttListener := MQTTClient url: mqttBroker.
 	mqttListener timeout: 70.
 	mqttListener open.
 	mqttListener subscribeToTopic: 'floors/+'.
 	[mqttListener runWith: [ :message | self processMessage: message] ] forkNamed: 'MQTTLoop'
+]
+
+{ #category : 'as yet unclassified' }
+MaHouseApp >> startWebserver [
+	
+	webserver := MaWebserver newOn: self house
+]
+
+{ #category : 'accessing' }
+MaHouseApp >> webserver [
+	^webserver
 ]
