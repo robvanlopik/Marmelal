@@ -23,12 +23,12 @@ MaWebserver >> on: aHouse [
 { #category : 'accessing' }
 MaWebserver >> start [
 	teapot ifNil: [ teapot := Teapot on 
-		GET: '/' -> 'I am the viewer'; 
+		GET: '/welcome' -> 'I am the viewer'; 
 		GET: '/test' -> [  :r | self test]; start ]
 ]
 
 { #category : 'accessing' }
-MaWebserver >> teapotIcon [ 
+MaWebserver >> teapot [
 	^teapot
 ]
 
