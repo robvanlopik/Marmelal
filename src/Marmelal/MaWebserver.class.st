@@ -15,6 +15,21 @@ MaWebserver class >> newOn: aHouse [
 	^self new on: aHouse
 ]
 
+{ #category : 'accessing' }
+MaWebserver >> house [
+	^house
+]
+
+{ #category : 'as yet unclassified' }
+MaWebserver >> installStatus [
+	teapot GET: '/status' -> [  :x | self status ]
+]
+
+{ #category : 'as yet unclassified' }
+MaWebserver >> keuken [
+ teapot GET: '/keuken' -> [ :w | (self house floors at: 1) tempAsString, ' ', (self house ssrs at: 1) ]
+]
+
 { #category : 'instance creation' }
 MaWebserver >> on: aHouse [
 	house := aHouse
@@ -25,6 +40,31 @@ MaWebserver >> start [
 	teapot ifNil: [ teapot := Teapot on 
 		GET: '/welcome' -> 'I am the viewer'; 
 		GET: '/test' -> [  :r | self test]; start ]
+]
+
+{ #category : 'accessing' }
+MaWebserver >> status [
+	" return a html string describing a table with header -plaats|temp|ssr- and 
+	the respective values"
+	| t floors |
+	
+floors := self house floors.
+
+t := ZnHtmlOutputStream streamContents: [  :html |
+	html page: 'Status' do: [
+		html tag: #br.
+		html tag: #table do: [
+			html tag: #tr do: [
+				html tag: #th with: 'loc'.
+				html tag: #th with: 'temp'.
+				html tag: #th with: 'ssr' ].
+			
+			html tag: #tr do: [ 
+				html tag: #td with: (floors at: 1) name.
+				html tag: #td with: (floors at: 1) tempAsString.
+				html tag: #td with: (house ssrs at: 1) ].
+			]]].
+	^t
 ]
 
 { #category : 'accessing' }
