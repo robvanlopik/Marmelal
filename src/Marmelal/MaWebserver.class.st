@@ -39,7 +39,8 @@ MaWebserver >> on: aHouse [
 MaWebserver >> start [
 	teapot ifNil: [ teapot := Teapot on 
 		GET: '/welcome' -> 'I am the viewer'; 
-		GET: '/test' -> [  :r | self test]; start ]
+		GET: '/test' -> [  :r | self test];
+		GET: '/status' -> [  :x | self status ]; start ]
 ]
 
 { #category : 'accessing' }
@@ -58,12 +59,13 @@ t := ZnHtmlOutputStream streamContents: [  :html |
 				html tag: #th with: 'loc'.
 				html tag: #th with: 'temp'.
 				html tag: #th with: 'ssr' ].
-			
+			#(1 2 3 4 5) do: [  :i |
+				
 			html tag: #tr do: [ 
-				html tag: #td with: (floors at: 1) name.
-				html tag: #td with: (floors at: 1) tempAsString.
-				html tag: #td with: (house ssrs at: 1) ].
-			]]].
+				html tag: #td with: (floors at: i) name.
+				html tag: #td with: (floors at: i) tempAsString.
+				html tag: #td with: (house ssrs at: i) ].
+			]]]].
 	^t
 ]
 
