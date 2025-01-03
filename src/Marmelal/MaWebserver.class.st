@@ -64,8 +64,16 @@ t := ZnHtmlOutputStream streamContents: [  :html |
 			html tag: #tr do: [ 
 				html tag: #td with: (floors at: i) name.
 				html tag: #td with: (floors at: i) tempAsString.
-				html tag: #td with: (house ssrs at: i) ].
-			]]]].
+				html tag: #td with: (house ssrs at: i) state asString].
+			]].
+		html tag: #br.
+		html tag: #b with: 'stromen:'.
+		html tag: #br.
+		html str: (((house currents at: 1) printShowingDecimalPlaces: 1) , ' | ' ,
+					 ((house currents at: 2) printShowingDecimalPlaces: 1) , ' | ' ,
+					 ((house currents at: 3) printShowingDecimalPlaces: 1 )).
+	]
+].
 	^t
 ]
 

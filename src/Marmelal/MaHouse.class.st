@@ -97,7 +97,8 @@ MaHouse >> floors: anObject [
 { #category : 'initialization' }
 MaHouse >> initTimestamps [
 	"set initial timestamps to now (startup of app)"
-	self floors do: [  :floor | floor tempTimestamp: DateAndTime now]
+	self floors do: [  :floor | floor tempTimestamp: DateAndTime now].
+	self ssrs do: [  :ssr | ssr tempTimestamp: DateAndTime now]
 ]
 
 { #category : 'initialization' }
@@ -118,10 +119,10 @@ MaHouse >> initialize [
 	(floors at: 4) ename: 'plateau'.
 	(floors at: 5) ename: 'sleeping'.
 	(floors at: 6) ename: 'office'.
-	(floors at: 7) ename: 'batch'.
+	(floors at: 7) ename: 'bath'.
 	
-	ssrs := Array new: 8 withAll: 'X'.
-	
+	ssrs := Array new: 8.
+	1 to: 7 do: [  :i | ssrs at: i put: MaSSR new  ].
 	
 	currents := Array new: 3 withAll: 0.
 ]

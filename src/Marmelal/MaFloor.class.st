@@ -25,6 +25,12 @@ MaFloor >> ename: aString [
 	ename := aString
 ]
 
+{ #category : 'initialization' }
+MaFloor >> initialize [ 
+	
+	tempTimestamp := DateAndTime now
+]
+
 { #category : 'accessing' }
 MaFloor >> name [
 	^ name

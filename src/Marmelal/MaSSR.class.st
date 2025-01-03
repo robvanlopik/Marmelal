@@ -4,12 +4,20 @@ Class {
 	#instVars : [
 		'state',
 		'setpoint',
-		'name'
+		'name',
+		'ssrTimestamp'
 	],
 	#category : 'Marmelal-Core',
 	#package : 'Marmelal',
 	#tag : 'Core'
 }
+
+{ #category : 'initialization' }
+MaSSR >> initialize [
+
+	ssrTimestamp := DateAndTime now
+	
+]
 
 { #category : 'accessing' }
 MaSSR >> name [
@@ -37,6 +45,18 @@ MaSSR >> setpointAsColor [
 	(setpoint = 0) ifTrue: [  ^Color green ].
 	
 	^Color gray .
+]
+
+{ #category : 'accessing' }
+MaSSR >> ssrTimestamp [
+
+	^ ssrTimestamp
+]
+
+{ #category : 'accessing' }
+MaSSR >> ssrTimestamp: anObject [
+
+	ssrTimestamp := anObject
 ]
 
 { #category : 'accessing' }
