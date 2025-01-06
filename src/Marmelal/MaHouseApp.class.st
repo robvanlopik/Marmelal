@@ -52,12 +52,6 @@ MaHouseApp >> baudRate: anObject [
 ]
 
 { #category : 'as yet unclassified' }
-MaHouseApp >> calculate [
-	"calculate new settings for the SSRs"
-
-]
-
-{ #category : 'as yet unclassified' }
 MaHouseApp >> communicateOnPort: aPort baudRate: aNumber [
 
 	serialPort := aPort.

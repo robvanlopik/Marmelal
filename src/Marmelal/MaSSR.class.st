@@ -29,22 +29,22 @@ MaSSR >> name: anObject [
 	name := anObject
 ]
 
-{ #category : 'accessing' }
-MaSSR >> setpoint [
-	^ setpoint
-]
-
-{ #category : 'accessing' }
-MaSSR >> setpoint: anObject [
-	setpoint := anObject
-]
-
 { #category : 'as yet unclassified' }
 MaSSR >> setpointAsColor [
 	(setpoint = 1) ifTrue: [ ^Color red ].
 	(setpoint = 0) ifTrue: [  ^Color green ].
 	
 	^Color gray .
+]
+
+{ #category : 'accessing' }
+MaSSR >> setpoints [
+	^ setpoint
+]
+
+{ #category : 'accessing' }
+MaSSR >> setpoints: anObject [
+	setpoint := anObject
 ]
 
 { #category : 'accessing' }

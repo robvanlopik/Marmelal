@@ -3,7 +3,8 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'temp',
-		'setpoint',
+		'setpoints',
+		'setpointFile',
 		'ssrState',
 		'power',
 		'name',
@@ -14,6 +15,25 @@ Class {
 	#package : 'Marmelal',
 	#tag : 'Core'
 }
+
+{ #category : 'as yet unclassified' }
+MaFloor >> calculateSSRAnalog [
+	"returns 0 or 1 depending on temp versus setpoint"
+	| timeSlot |
+	
+timeSlot := DateAndTime now secondsSinceMidnightLocalTime // 1800.
+temp < (setpoints at: (timeSlot + 1)) ifTrue: [ ^1 ].
+^0
+]
+
+{ #category : 'as yet unclassified' }
+MaFloor >> calculateSSRBinary [
+	"returns 0 or 1 depending on binary setpoint"
+	| timeSlot |
+	
+	timeSlot := DateAndTime now secondsSinceMidnightLocalTime // 1800.
+	^setpoints at: (timeSlot + 1)
+]
 
 { #category : 'accessing' }
 MaFloor >> ename [
@@ -28,7 +48,8 @@ MaFloor >> ename: aString [
 { #category : 'initialization' }
 MaFloor >> initialize [ 
 	
-	tempTimestamp := DateAndTime now
+	tempTimestamp := DateAndTime now.
+	
 ]
 
 { #category : 'accessing' }
@@ -51,14 +72,40 @@ MaFloor >> power: anObject [
 	power := anObject
 ]
 
-{ #category : 'accessing' }
-MaFloor >> setpoint [
-	^ setpoint
+{ #category : 'as yet unclassified' }
+MaFloor >> readSetpointFileAnalog [
+	| fileName file t |
+	fileName := self name , '.txt'.
+	file := FileLocator downloads / fileName.
+	 " should check for existence!!)"
+	file exists ifFalse: [ setpoints := Array new: 24  withAll: 16. ^self].
+	t := (file readStream upToEnd) substrings.
+	setpoints := t withIndexSelect: [ :a :i | ((i \\3) ~= 1) ]. "skip the hour indicator"
+	setpoints := setpoints collect: [  :v | v asNumber ]
+	"we should do some check, e.g setpoins size = 48"
+]
+
+{ #category : 'as yet unclassified' }
+MaFloor >> readSetpointFileBinary [
+	| fileName file t |
+	fileName := self name , '.txt'.
+	file := FileLocator downloads / fileName.
+	 " should check for existence!!)"
+	file exists ifFalse: [ setpoints := Array new: 24  withAll: 0. ^self].
+	t := (file readStream upToEnd) substrings.
+	setpoints := t withIndexSelect: [ :a :i | ((i \\3) ~= 1) ]. "skip the hour indicator"
+	setpoints := setpoints collect: [  :v | v asNumber ]
+	"we should do some check, e.g setpoins size = 48"
 ]
 
 { #category : 'accessing' }
-MaFloor >> setpoint: anObject [
-	setpoint := anObject
+MaFloor >> setpoints [
+	^ setpoints
+]
+
+{ #category : 'accessing' }
+MaFloor >> setpoints: anObject [
+	setpoints := anObject
 ]
 
 { #category : 'accessing' }

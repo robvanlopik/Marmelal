@@ -41,11 +41,11 @@ MaHouse >> currents: anObject [
 MaHouse >> example1 [
 	"make a house with fictive data"
 	
-	(self floors at: 1) temp: 17; setpoint: 16; ssrState: 'A'.
-	(self floors at: 2) temp: 18; setpoint: 16; ssrState: 'O'.
-	(self floors at: 3) temp: 17; setpoint: 17; ssrState: 'U'.
-	(self floors at: 4) temp: 20; setpoint: 21; ssrState: 'A'.
-	(self floors at: 5) temp: 17; setpoint: 16; ssrState: 'A'.
+	(self floors at: 1) temp: 17; setpoints: 16; ssrState: 'A'.
+	(self floors at: 2) temp: 18; setpoints: 16; ssrState: 'O'.
+	(self floors at: 3) temp: 17; setpoints: 17; ssrState: 'U'.
+	(self floors at: 4) temp: 20; setpoints: 21; ssrState: 'A'.
+	(self floors at: 5) temp: 17; setpoints: 16; ssrState: 'A'.
 ]
 
 { #category : 'accessing' }
@@ -120,6 +120,9 @@ MaHouse >> initialize [
 	(floors at: 5) ename: 'sleeping'.
 	(floors at: 6) ename: 'office'.
 	(floors at: 7) ename: 'bath'.
+	
+	#(1 2 3 4 5 ) do: [ :i | (floors at: 1) readSetpointFileAnalog ].
+	#(6 7) do: [ :i | (floors at: 1) readSetpointFileBinary ].
 	
 	ssrs := Array new: 8.
 	1 to: 7 do: [  :i | ssrs at: i put: MaSSR new  ].
