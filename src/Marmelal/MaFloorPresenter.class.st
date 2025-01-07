@@ -1,18 +1,16 @@
 Class {
-	#name : 'MaFloorPresenter',
-	#superclass : 'SpPresenter',
+	#name : #MaFloorPresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'name',
 		'temp',
 		'setPoint',
 		'ssrState'
 	],
-	#category : 'Marmelal-Spec',
-	#package : 'Marmelal',
-	#tag : 'Spec'
+	#category : 'Marmelal-Spec'
 }
 
-{ #category : 'specs' }
+{ #category : #specs }
 MaFloorPresenter class >> defaultSpec [ 
 	^SpBoxLayout newVertical
 	beHomogeneous;
@@ -27,7 +25,7 @@ MaFloorPresenter class >> defaultSpec [
 
 ]
 
-{ #category : 'layout' }
+{ #category : #layout }
 MaFloorPresenter >> defaultLayout [
 	^SpBoxLayout newVertical
 	beHomogeneous;
@@ -42,7 +40,7 @@ MaFloorPresenter >> defaultLayout [
 
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaFloorPresenter >> initializePresenters [ 
 	name := self newLabel.
 	temp := self newLabel.
@@ -51,42 +49,42 @@ MaFloorPresenter >> initializePresenters [
 	ssrState morph: MaIndicator new
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloorPresenter >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloorPresenter >> name: anObject [
 	name := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloorPresenter >> setPoint [
 	^ setPoint
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloorPresenter >> setPoint: anObject [
 	setPoint := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloorPresenter >> ssrState [
 	^ ssrState
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloorPresenter >> ssrState: anObject [
 	ssrState := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloorPresenter >> temp [
 	^ temp
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloorPresenter >> temp: anObject [
 	temp := anObject
 ]

@@ -21,15 +21,13 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : 'MaController',
-	#superclass : 'Object',
+	#name : #MaController,
+	#superclass : #Object,
 	#instVars : [
 		'house',
 		'webApp',
 		'doos1Serial',
 		'mqttlistener'
 	],
-	#category : 'Marmelal-Core',
-	#package : 'Marmelal',
-	#tag : 'Core'
+	#category : 'Marmelal-Core'
 }

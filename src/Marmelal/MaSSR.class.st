@@ -1,35 +1,33 @@
 Class {
-	#name : 'MaSSR',
-	#superclass : 'Object',
+	#name : #MaSSR,
+	#superclass : #Object,
 	#instVars : [
 		'state',
 		'setpoint',
 		'name',
 		'ssrTimestamp'
 	],
-	#category : 'Marmelal-Core',
-	#package : 'Marmelal',
-	#tag : 'Core'
+	#category : 'Marmelal-Core'
 }
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaSSR >> initialize [
 
 	ssrTimestamp := DateAndTime now
 	
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSSR >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSSR >> name: anObject [
 	name := anObject
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 MaSSR >> setpointAsColor [
 	(setpoint = 1) ifTrue: [ ^Color red ].
 	(setpoint = 0) ifTrue: [  ^Color green ].
@@ -37,39 +35,39 @@ MaSSR >> setpointAsColor [
 	^Color gray .
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSSR >> setpoints [
 	^ setpoint
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSSR >> setpoints: anObject [
 	setpoint := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSSR >> ssrTimestamp [
 
 	^ ssrTimestamp
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSSR >> ssrTimestamp: anObject [
 
 	ssrTimestamp := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSSR >> state [
 	^ state
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSSR >> state: anObject [
 	state := anObject
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 MaSSR >> stateAsColor [
 	(state = #A) ifTrue: [ ^Color red ].
 	(state = #U) ifTrue: [  ^Color green ].

@@ -1,6 +1,6 @@
 Class {
-	#name : 'MaFloor',
-	#superclass : 'Object',
+	#name : #MaFloor,
+	#superclass : #Object,
 	#instVars : [
 		'temp',
 		'setpoints',
@@ -11,12 +11,10 @@ Class {
 		'ename',
 		'tempTimestamp'
 	],
-	#category : 'Marmelal-Core',
-	#package : 'Marmelal',
-	#tag : 'Core'
+	#category : 'Marmelal-Core'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 MaFloor >> calculateSSRAnalog [
 	"returns 0 or 1 depending on temp versus setpoint"
 	| timeSlot |
@@ -26,7 +24,7 @@ temp < (setpoints at: (timeSlot + 1)) ifTrue: [ ^1 ].
 ^0
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 MaFloor >> calculateSSRBinary [
 	"returns 0 or 1 depending on binary setpoint"
 	| timeSlot |
@@ -35,44 +33,44 @@ MaFloor >> calculateSSRBinary [
 	^setpoints at: (timeSlot + 1)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> ename [
 	^ename
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> ename: aString [
 	ename := aString
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaFloor >> initialize [ 
 	
 	tempTimestamp := DateAndTime now.
 	
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> name: anObject [
 	name := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> power [
 	^ power
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> power: anObject [
 	power := anObject
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 MaFloor >> readSetpointFileAnalog [
 	| fileName file t |
 	fileName := self name , '.txt'.
@@ -85,7 +83,7 @@ MaFloor >> readSetpointFileAnalog [
 	"we should do some check, e.g setpoins size = 48"
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 MaFloor >> readSetpointFileBinary [
 	| fileName file t |
 	fileName := self name , '.txt'.
@@ -98,27 +96,27 @@ MaFloor >> readSetpointFileBinary [
 	"we should do some check, e.g setpoins size = 48"
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> setpoints [
 	^ setpoints
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> setpoints: anObject [
 	setpoints := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> ssrState [
 	^ ssrState
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> ssrState: anObject [
 	ssrState := anObject
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 MaFloor >> ssrStateAsColor [
 	(ssrState = #A) ifTrue: [ ^Color red ].
 	(ssrState = #U) ifTrue: [  ^Color green ].
@@ -126,17 +124,17 @@ MaFloor >> ssrStateAsColor [
 	^Color gray .
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> temp [
 	^ temp
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> temp: anObject [
 	temp := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> tempAsString [
 	"return the temperaaure as string with one decimal placeAtEnd 
 	can also be 'not connected (- ), 'kortsluiting' of 'geen meting'
@@ -149,13 +147,13 @@ MaFloor >> tempAsString [
 	^ temp printShowingDecimalPlaces: 1
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> tempTimestamp [
 
 	^ tempTimestamp
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaFloor >> tempTimestamp: anObject [
 
 	tempTimestamp := anObject

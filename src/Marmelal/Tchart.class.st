@@ -1,23 +1,21 @@
 Class {
-	#name : 'Tchart',
-	#superclass : 'BorderedMorph',
+	#name : #Tchart,
+	#superclass : #BorderedMorph,
 	#instVars : [
 		'tbars',
 		'activeBar',
 		'timeLabel',
 		'tempLabel'
 	],
-	#category : 'Marmelal-Spec',
-	#package : 'Marmelal',
-	#tag : 'Spec'
+	#category : 'Marmelal-Spec'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 Tchart >> activeBar [
 	^ activeBar
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 Tchart >> activeBar: aNumber [
 	| old |
 	old := self activeBar .
@@ -29,7 +27,7 @@ Tchart >> activeBar: aNumber [
 	
 ]
 
-{ #category : 'API' }
+{ #category : #API }
 Tchart >> decrement [
 	"increment the tempCode at the active bar"
 	
@@ -43,7 +41,7 @@ Tchart >> decrement [
 	self tempLabel contents: (self tbars at: activeBar) realTemp asString. 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 Tchart >> increment [
 	"increment the tempCode at the active bar"
 	
@@ -57,13 +55,13 @@ Tchart >> increment [
 	self tempLabel contents: (self tbars at: activeBar) realTemp asString. 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 Tchart >> incrementActive [
 
 	self activeBar = 15 ifTrue: [ ^nil ].
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 Tchart >> initBars [
 	"create the barsand add them to tbars and to self"
 		
@@ -74,7 +72,7 @@ Tchart >> initBars [
 		 ]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 Tchart >> initLegenda [
 	| time temp |
 	
@@ -91,7 +89,7 @@ Tchart >> initLegenda [
 	self addMorph: temp.
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 Tchart >> initialize [ 
 	super initialize.
 	tbars := Array new: 48.
@@ -102,7 +100,7 @@ Tchart >> initialize [
 	self initLegenda.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 Tchart >> loadWith: anArray active: aNumber [
 "load the graph with a coded temp array and the active timeIndex (1..48)"
 	
@@ -118,7 +116,7 @@ Tchart >> loadWith: anArray active: aNumber [
 	self timeLabel contents: self timeStringActive.
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 Tchart >> newTbarAt: aNumber [
 
 	| tb origin|
@@ -129,7 +127,7 @@ Tchart >> newTbarAt: aNumber [
 	^tb
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 Tchart >> newTcodes [
 	"return a collection with the new Temperature codes"
 	| result |
@@ -137,7 +135,7 @@ Tchart >> newTcodes [
 	^result
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 Tchart >> nextTime [
 	(tbars at: activeBar) color: Color paleBlue darker.
 	activeBar := activeBar + 1.
@@ -149,7 +147,7 @@ Tchart >> nextTime [
 	
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 Tchart >> previousTime [
 
 	(tbars at: activeBar) color: Color paleBlue darker.
@@ -160,27 +158,27 @@ Tchart >> previousTime [
 	self tempLabel contents: (self tbars at: activeBar) realTemp asString. 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 Tchart >> tbars [
 	^ tbars
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 Tchart >> tbars: anObject [
 	tbars := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 Tchart >> tempLabel [
 	^ tempLabel
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 Tchart >> tempLabel: anObject [
 	tempLabel := anObject
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 Tchart >> testArray [ 
 	"return anArray uesful for testen"
 	| t | 
@@ -189,17 +187,17 @@ Tchart >> testArray [
 	^t
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 Tchart >> timeLabel [
 	^ timeLabel
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 Tchart >> timeLabel: anObject [
 	timeLabel := anObject
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 Tchart >> timeStringActive [
 	"return string representing time corresponding to active bar"
 	

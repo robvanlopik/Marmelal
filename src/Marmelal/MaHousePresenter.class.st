@@ -1,6 +1,6 @@
 Class {
-	#name : 'MaHousePresenter',
-	#superclass : 'SpPresenter',
+	#name : #MaHousePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'kitchen',
 		'sitting',
@@ -12,12 +12,10 @@ Class {
 		'bath',
 		'currents'
 	],
-	#category : 'Marmelal-Spec',
-	#package : 'Marmelal',
-	#tag : 'Spec'
+	#category : 'Marmelal-Spec'
 }
 
-{ #category : 'specs' }
+{ #category : #specs }
 MaHousePresenter class >> defaultSpec [
 	^SpGridLayout new 
 	beRowHomogeneous;
@@ -33,7 +31,7 @@ MaHousePresenter class >> defaultSpec [
 	yourself
 ]
 
-{ #category : 'layout' }
+{ #category : #layout }
 MaHousePresenter >> defaultLayout [
 	^SpGridLayout new 
 	beRowHomogeneous;
@@ -49,27 +47,27 @@ MaHousePresenter >> defaultLayout [
 	yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> diner [
 	^ diner
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> diner: anObject [
 	diner := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> harpsi [
 	^ harpsi
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> harpsi: anObject [
 	harpsi := anObject
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaHousePresenter >> initializePresenters [ 
 	kitchen := self instantiate: MaFloorPresenter.
 	sitting := self instantiate: MaFloorPresenter .
@@ -93,44 +91,44 @@ MaHousePresenter >> initializePresenters [
 	currents name label: 'stromen(A)'.
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaHousePresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter 	
 		title: 'Bulhe';
 		initialExtent: 700@350
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> kitchen [
 	^ kitchen
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> kitchen: anObject [
 	kitchen := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> sitting [
 	^ sitting
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> sitting: anObject [
 	sitting := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> sleep [
 	^ sleep
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHousePresenter >> sleep: anObject [
 	sleep := anObject
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaHousePresenter >> updatePresenter [
 	| house |
 	house := self application house.

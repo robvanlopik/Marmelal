@@ -1,6 +1,6 @@
 Class {
-	#name : 'MaHouse',
-	#superclass : 'Object',
+	#name : #MaHouse,
+	#superclass : #Object,
 	#instVars : [
 		'floors',
 		'rooms',
@@ -9,35 +9,33 @@ Class {
 		'aircos',
 		'exterior'
 	],
-	#category : 'Marmelal-Core',
-	#package : 'Marmelal',
-	#tag : 'Core'
+	#category : 'Marmelal-Core'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> aircos [
 
 	^ aircos
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> aircos: anObject [
 
 	aircos := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> currents [ 
 	^currents
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> currents: anObject [
 
 	currents := anObject
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 MaHouse >> example1 [
 	"make a house with fictive data"
 	
@@ -48,19 +46,19 @@ MaHouse >> example1 [
 	(self floors at: 5) temp: 17; setpoints: 16; ssrState: 'A'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> exterior [
 
 	^ exterior
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> exterior: anObject [
 
 	exterior := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> fakeValues [
 	"assugn some fake values for testing (UI en Web)"
 	(floors at: 1) temp: 20.111.
@@ -73,35 +71,35 @@ MaHouse >> fakeValues [
 	
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 MaHouse >> floorENamed: aString [
 "return the floor with english name aString"
 	^floors detect: [ :f | f ename = aString ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 MaHouse >> floorNamed: aString [
 	^ floors detect: [  :f |f name = aString ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> floors [
 	^ floors
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> floors: anObject [
 	floors := anObject
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaHouse >> initTimestamps [
 	"set initial timestamps to now (startup of app)"
 	self floors do: [  :floor | floor tempTimestamp: DateAndTime now].
 	self ssrs do: [  :ssr | ssr tempTimestamp: DateAndTime now]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaHouse >> initialize [ 
 	super initialize.
 	floors := Array new: 7.
@@ -130,29 +128,29 @@ MaHouse >> initialize [
 	currents := Array new: 3 withAll: 0.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> rooms [
 
 	^ rooms
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> rooms: anObject [
 
 	rooms := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> ssrs [
 	^ ssrs
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaHouse >> ssrs: anObject [
 	ssrs := anObject
 ]
 
-{ #category : 'helper' }
+{ #category : #helper }
 MaHouse >> timeIndexNow [
 	 "return the actual time as a timeindex (48 intervals
 	 in Arduino it runs 0..47 but here we will use the intervl 1..48 

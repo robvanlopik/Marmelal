@@ -1,6 +1,6 @@
 Class {
-	#name : 'MaSetpointPresenter',
-	#superclass : 'SpPresenter',
+	#name : #MaSetpointPresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'graph',
 		'left',
@@ -10,12 +10,10 @@ Class {
 		'ok',
 		'quit'
 	],
-	#category : 'Marmelal-Spec',
-	#package : 'Marmelal',
-	#tag : 'Spec'
+	#category : 'Marmelal-Spec'
 }
 
-{ #category : 'specs' }
+{ #category : #specs }
 MaSetpointPresenter class >> defaultSpec [ 	
 	^SpBoxLayout newVertical
 		add: #graph height: 400;
@@ -31,7 +29,7 @@ MaSetpointPresenter class >> defaultSpec [
 		yourself
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaSetpointPresenter >> connectPresenters [
 	left action: [  graph morph previousTime  ].
 	right action: [ graph morph nextTime ].
@@ -41,7 +39,7 @@ MaSetpointPresenter >> connectPresenters [
 	
 ]
 
-{ #category : 'layout' }
+{ #category : #layout }
 MaSetpointPresenter >> defaultLayout [
 	^SpBoxLayout newVertical
 		add: #graph height: 400;
@@ -57,27 +55,27 @@ MaSetpointPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> down [
 	^ down
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> down: anObject [
 	down := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> graph [
 	^ graph
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> graph: anObject [
 	graph := anObject
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaSetpointPresenter >> initializePresenters [ 	
 	graph := self newMorph.
 	left := self newButton
@@ -98,59 +96,59 @@ MaSetpointPresenter >> initializePresenters [
 		
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaSetpointPresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter
 		title: 'setpoints';
 		initialExtent: 600@550
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> left [
 	^ left
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> left: anObject [
 	left := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> ok [
 	^ ok
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> ok: anObject [
 	ok := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> quit [
 	^ quit
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> quit: anObject [
 	quit := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> right [
 	^ right
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> right: anObject [
 	right := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> up [
 	^ up
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaSetpointPresenter >> up: anObject [
 	up := anObject
 ]
