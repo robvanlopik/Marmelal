@@ -11,17 +11,21 @@ Class {
 		'ename',
 		'tempTimestamp'
 	],
-	#category : 'Marmelal-Core'
+	#category : #'Marmelal-Core'
 }
 
 { #category : #'as yet unclassified' }
 MaFloor >> calculateSSRAnalog [
 	"returns 0 or 1 depending on temp versus setpoint"
 	| timeSlot |
+
+	" first check for irregulat temp values"
+	(temp < 0) ifTrue:	[ ^0 ]. " fault with temp measurement"
+	(DateAndTime now - tempTimestamp) > 30 minutes ifTrue: [ ^0 ]. "no revent measurement"
 	
-timeSlot := DateAndTime now secondsSinceMidnightLocalTime // 1800.
-temp < (setpoints at: (timeSlot + 1)) ifTrue: [ ^1 ].
-^0
+	timeSlot := DateAndTime now secondsSinceMidnightLocalTime // 1800.
+	temp < (setpoints at: (timeSlot + 1)) ifTrue: [ ^1 ].
+	^0
 ]
 
 { #category : #'as yet unclassified' }
@@ -76,7 +80,7 @@ MaFloor >> readSetpointFileAnalog [
 	fileName := self name , '.txt'.
 	file := FileLocator downloads / fileName.
 	 " should check for existence!!)"
-	file exists ifFalse: [ setpoints := Array new: 24  withAll: 16. ^self].
+	file exists ifFalse: [ setpoints := Array new: 48  withAll: 16. ^self].
 	t := (file readStream upToEnd) substrings.
 	setpoints := t withIndexSelect: [ :a :i | ((i \\3) ~= 1) ]. "skip the hour indicator"
 	setpoints := setpoints collect: [  :v | v asNumber ]
@@ -89,7 +93,7 @@ MaFloor >> readSetpointFileBinary [
 	fileName := self name , '.txt'.
 	file := FileLocator downloads / fileName.
 	 " should check for existence!!)"
-	file exists ifFalse: [ setpoints := Array new: 24  withAll: 0. ^self].
+	file exists ifFalse: [ setpoints := Array new: 48  withAll: 0. ^self].
 	t := (file readStream upToEnd) substrings.
 	setpoints := t withIndexSelect: [ :a :i | ((i \\3) ~= 1) ]. "skip the hour indicator"
 	setpoints := setpoints collect: [  :v | v asNumber ]

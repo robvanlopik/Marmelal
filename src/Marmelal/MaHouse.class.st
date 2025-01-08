@@ -9,7 +9,7 @@ Class {
 		'aircos',
 		'exterior'
 	],
-	#category : 'Marmelal-Core'
+	#category : #'Marmelal-Core'
 }
 
 { #category : #accessing }
@@ -119,11 +119,11 @@ MaHouse >> initialize [
 	(floors at: 6) ename: 'office'.
 	(floors at: 7) ename: 'bath'.
 	
-	#(1 2 3 4 5 ) do: [ :i | (floors at: 1) readSetpointFileAnalog ].
-	#(6 7) do: [ :i | (floors at: 1) readSetpointFileBinary ].
+	#(1 2 3 4 5 ) do: [ :i | (floors at: i) readSetpointFileAnalog ].
+	#(6 7) do: [ :i | (floors at: i) readSetpointFileBinary ].
 	
 	ssrs := Array new: 8.
-	1 to: 7 do: [  :i | ssrs at: i put: MaSSR new  ].
+	1 to: 8 do: [  :i | ssrs at: i put: MaSSR new  ].
 	
 	currents := Array new: 3 withAll: 0.
 ]
