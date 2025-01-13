@@ -32,9 +32,18 @@ Class {
 	#category : #'Marmelal-Spec'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #action }
 MaHouseApp >> act [
-	"write the calculated settings to the SSRs"
+	"write the calculated settings to the SSRs
+	delay each time for 10 seconds to avoid large power changes"
+	1 to: 5 do: [ :i |
+		(house floors at: i) calculateSSRAnalog = 0 ifTrue: [ serialPort switchOff: ( i - 1)] 
+																ifFalse: [ serialPort switchOn: ( i - 1)].
+																10 seconds wait ].
+	6 to: 7 do: [ :i |
+		(house floors at: i) calculateSSRBinary = 0 ifTrue: [ serialPort switchOff: ( i - 1)] 
+																ifFalse: [ serialPort switchOn: ( i - 1)].
+																10 seconds wait].
 ]
 
 { #category : #accessing }
@@ -184,8 +193,8 @@ MaHouseApp >> start [
 MaHouseApp >> startCycle [
 	"start the actual cycles"
 	scheduler do: 
-		[ self readSerial. self act ]
-		every: 5 minutes
+		[ self act. 1 seconds wait. self readSerial ]
+		every: 6 minutes
 ]
 
 { #category : #'as yet unclassified' }
