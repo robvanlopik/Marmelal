@@ -1,39 +1,41 @@
 Class {
-	#name : #MaWebserver,
-	#superclass : #Object,
+	#name : 'MaWebserver',
+	#superclass : 'Object',
 	#instVars : [
 		'teapot',
 		'house'
 	],
-	#category : 'Marmelal-Comms'
+	#category : 'Marmelal-Comms',
+	#package : 'Marmelal',
+	#tag : 'Comms'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MaWebserver class >> newOn: aHouse [
 	^self new on: aHouse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaWebserver >> house [
 	^house
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaWebserver >> installStatus [
 	teapot GET: '/status' -> [  :x | self status ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaWebserver >> keuken [
  teapot GET: '/keuken' -> [ :w | (self house floors at: 1) tempAsString, ' ', (self house ssrs at: 1) ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MaWebserver >> on: aHouse [
 	house := aHouse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaWebserver >> start [
 	teapot ifNil: [ teapot := Teapot on 
 		GET: '/welcome' -> 'I am the viewer'; 
@@ -41,7 +43,7 @@ MaWebserver >> start [
 		GET: '/status' -> [  :x | self status ]; start ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaWebserver >> status [
 	" return a html string describing a table with header -plaats|temp|ssr- and 
 	the respective values"
@@ -75,12 +77,12 @@ t := ZnHtmlOutputStream streamContents: [  :html |
 	^t
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaWebserver >> teapot [
 	^teapot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaWebserver >> test [
 	^'test'
 ]

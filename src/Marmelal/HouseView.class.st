@@ -1,14 +1,16 @@
 Class {
-	#name : #HouseView,
-	#superclass : #BorderedMorph,
+	#name : 'HouseView',
+	#superclass : 'BorderedMorph',
 	#instVars : [
 		'house',
 		'floormorphs'
 	],
-	#category : 'Marmelal-Spec'
+	#category : 'Marmelal-Spec',
+	#package : 'Marmelal',
+	#tag : 'Spec'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 HouseView >> initialize [ 
 
 	super initialize.

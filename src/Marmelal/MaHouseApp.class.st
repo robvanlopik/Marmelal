@@ -16,8 +16,8 @@ eventually you coud start the GUI with
 self startGUI
 "
 Class {
-	#name : #MaHouseApp,
-	#superclass : #SpApplication,
+	#name : 'MaHouseApp',
+	#superclass : 'SpApplication',
 	#instVars : [
 		'scheduler',
 		'house',
@@ -29,57 +29,59 @@ Class {
 		'mqttBroker',
 		'webserver'
 	],
-	#category : #'Marmelal-Spec'
+	#category : 'Marmelal-Spec',
+	#package : 'Marmelal',
+	#tag : 'Spec'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> act [
 	"write the calculated settings to the SSRs"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> baudRate [
 
 	^ baudRate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> baudRate: anObject [
 
 	baudRate := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> communicateOnPort: aPort baudRate: aNumber [
 
 	serialPort := aPort.
 	baudRate := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> house [ 
 	^house
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> house: anObject [
 
 	house := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> housePresenter [
 
 	^ housePresenter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> housePresenter: anObject [
 
 	housePresenter := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MaHouseApp >> initialize [ 
 	super initialize.
 	
@@ -92,31 +94,31 @@ MaHouseApp >> initialize [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> mqttBroker [
 
 	^ mqttBroker
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> mqttBroker: anObject [
 
 	mqttBroker := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> mqttListener [
 
 	^ mqttListener
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> mqttListener: anObject [
 
 	mqttListener := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> processMessage: anMQTTMessage [
 	"set the  tempeature of the floor in the topic"
 	| floor temp |
@@ -127,60 +129,65 @@ MaHouseApp >> processMessage: anMQTTMessage [
 	(house floorENamed: floor) tempTimestamp: DateAndTime now
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> readSerial [
-	"read currents and status and write to corresponding slots in house"
+	"read currents and status and write to corresponding slots in house
+	check status for length 10 (Sxxxxxxxxlf)
+	and currentstring for end lf"
 	| statusString currentsString |
 	
 	statusString := serialController status asString.
-	1 to: 8 do: [ :i | (house ssrs at: i) state: (statusString at: (i + 1)); ssrTimestamp: (DateAndTime now) ].
+	(statusString size = 10) ifTrue: [  
+		1 to: 8 do: 
+		[ :i | (house ssrs at: i) state: (statusString at: (i + 1)); ssrTimestamp: (DateAndTime now) ]].
 	
 	currentsString := serialController currents asString.
-	(currentsString substrings: ',') withIndexDo: [ :s :i | house currents at: i put: (s asNumber)  ]
+	(currentsString last = Character lf) ifTrue: [ 
+	(currentsString substrings: ',') withIndexDo: [ :s :i | house currents at: i put: (s asNumber) ]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> scheduler [
 
 	^ scheduler
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> scheduler: anObject [
 
 	scheduler := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> serialController [
 
 	^ serialController
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> serialController: anObject [
 
 	serialController := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> serialPort [
 
 	^ serialPort
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> serialPort: anObject [
 
 	serialPort := anObject
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MaHouseApp >> start [ 
 	(self new: MaHousePresenter) open
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> startCycle [
 	"start the actual cycles"
 	scheduler do: 
@@ -188,7 +195,7 @@ MaHouseApp >> startCycle [
 		every: 5 minutes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> startMQTTListener [
 	mqttListener := MQTTClient url: mqttBroker.
 	mqttListener timeout: 70.
@@ -197,26 +204,26 @@ MaHouseApp >> startMQTTListener [
 	[mqttListener runWith: [ :message | self processMessage: message] ] forkNamed: 'MQTTLoop'
 ]
 
-{ #category : #startup }
+{ #category : 'startup' }
 MaHouseApp >> startSerial [
 	"start MaSerialController
 	presupposes that port and baudrate have been set"
 	serialController := MaSerialController new connectOnPort: serialPort
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MaHouseApp >> startWebserver [
 	
 	webserver := MaWebserver newOn: self house.
 	webserver start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> webserver [
 	^webserver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaHouseApp >> webserver: anObject [
 
 	webserver := anObject

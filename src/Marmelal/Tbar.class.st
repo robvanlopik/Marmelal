@@ -1,13 +1,15 @@
 Class {
-	#name : #Tbar,
-	#superclass : #BorderedMorph,
+	#name : 'Tbar',
+	#superclass : 'BorderedMorph',
 	#instVars : [
 		'tempCode'
 	],
-	#category : 'Marmelal-Spec'
+	#category : 'Marmelal-Spec',
+	#package : 'Marmelal',
+	#tag : 'Spec'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 Tbar >> incrementTemp [
 	|newTemp|
 	self tempCode = 15 ifTrue: [ ^15 ].
@@ -17,14 +19,14 @@ Tbar >> incrementTemp [
 	^newTemp
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Tbar >> initialize [
  	super initialize .
 
 	self color: Color paleBlue darker.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 Tbar >> realTemp [
 	"returns the real temperature"
 	| code |
@@ -36,17 +38,17 @@ Tbar >> realTemp [
 	^(code + 12)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Tbar >> tempCode [
 	^ tempCode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Tbar >> tempCode: anObject [
 	tempCode := anObject
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 Tbar >> width [ 
 	^10
 ]

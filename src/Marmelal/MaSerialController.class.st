@@ -4,20 +4,22 @@ I communicate with ""doos1"", an Arduino that measures the currents in 3 phases 
 !! probably needd semaphore or access must be serialized
 "
 Class {
-	#name : #MaSerialController,
-	#superclass : #Object,
+	#name : 'MaSerialController',
+	#superclass : 'Object',
 	#instVars : [
 		'port'
 	],
-	#category : #'Marmelal-Comms'
+	#category : 'Marmelal-Comms',
+	#package : 'Marmelal',
+	#tag : 'Comms'
 }
 
-{ #category : #connection }
+{ #category : 'connection' }
 MaSerialController >> connectOnPort: aPortString [
 	port := SerialPort new openPort: aPortString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaSerialController >> currents [
 	"receive currents"
 	port readByteArray.  "empty input"
@@ -26,19 +28,19 @@ MaSerialController >> currents [
 	^(port readByteArray: 100) allButFirst
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MaSerialController >> on: ssrNr for: mins [
 	self switchOn: ssrNr.
 	mins minutes wait.
 	self switchOff: ssrNr
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaSerialController >> port [
 	^port
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaSerialController >> status [
 	"receive status string"
 	port readByteArray.  "empty input"
@@ -47,14 +49,14 @@ MaSerialController >> status [
 	^(port readByteArray: 100).
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 MaSerialController >> switchOff: ssrNr [
 	| message |
 	message := ByteArray with: $U asInteger with: (ssrNr + 48) with: 10.
 	port nextPutAll: message
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 MaSerialController >> switchOn: ssrNr [
 	| message |
 	message := ByteArray with: $A asInteger with: (ssrNr + 48) with: 10.

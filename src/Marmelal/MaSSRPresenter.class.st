@@ -1,15 +1,17 @@
 Class {
-	#name : #MaSSRPresenter,
-	#superclass : #SpPresenter,
+	#name : 'MaSSRPresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'name',
 		'ssrState',
 		'setPoint'
 	],
-	#category : 'Marmelal-Spec'
+	#category : 'Marmelal-Spec',
+	#package : 'Marmelal',
+	#tag : 'Spec'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 MaSSRPresenter class >> defaultSpec [
 		^SpBoxLayout newVertical
 		add: #name height: 30;
@@ -19,7 +21,7 @@ MaSSRPresenter class >> defaultSpec [
 		
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 MaSSRPresenter >> defaultLayout [
 		^SpBoxLayout newVertical
 		add: #name height: 30;
@@ -29,7 +31,7 @@ MaSSRPresenter >> defaultLayout [
 		
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MaSSRPresenter >> initializePresenters [ 
 	name := self newLabel.
 	ssrState := self newMorph.
@@ -40,32 +42,32 @@ MaSSRPresenter >> initializePresenters [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaSSRPresenter >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaSSRPresenter >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaSSRPresenter >> setPoint [
 	^ setPoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaSSRPresenter >> setPoint: anObject [
 	setPoint := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaSSRPresenter >> ssrState [
 	^ ssrState
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaSSRPresenter >> ssrState: anObject [
 	ssrState := anObject
 ]
