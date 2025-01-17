@@ -37,12 +37,12 @@ MaHouseApp >> act [
 	"write the calculated settings to the SSRs
 	delay each time for 10 seconds to avoid large power changes"
 	1 to: 5 do: [ :i |
-		(house floors at: i) calculateSSRAnalog = 0 ifTrue: [ serialPort switchOff: ( i - 1)] 
-																ifFalse: [ serialPort switchOn: ( i - 1)].
+		(house floors at: i) calculateSSRAnalog = 0 ifTrue: [ serialController switchOff: ( i - 1)] 
+																ifFalse: [ serialController switchOn: ( i - 1)].
 																10 seconds wait ].
 	6 to: 7 do: [ :i |
-		(house floors at: i) calculateSSRBinary = 0 ifTrue: [ serialPort switchOff: ( i - 1)] 
-																ifFalse: [ serialPort switchOn: ( i - 1)].
+		(house floors at: i) calculateSSRBinary = 0 ifTrue: [ serialController switchOff: ( i - 1)] 
+																ifFalse: [ serialController switchOn: ( i - 1)].
 																10 seconds wait].
 ]
 
