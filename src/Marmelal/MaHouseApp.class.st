@@ -29,7 +29,7 @@ Class {
 		'mqttBroker',
 		'webserver'
 	],
-	#category : #'Marmelal-Spec'
+	#category : 'Marmelal-Spec'
 }
 
 { #category : #action }
@@ -138,14 +138,19 @@ MaHouseApp >> processMessage: anMQTTMessage [
 
 { #category : #'as yet unclassified' }
 MaHouseApp >> readSerial [
-	"read currents and status and write to corresponding slots in house"
+	"read currents and status and write to corresponding slots in house
+	check status for length 10 (Sxxxxxxxxlf)
+	and currentstring for end lf"
 	| statusString currentsString |
 	
 	statusString := serialController status asString.
-	1 to: 8 do: [ :i | (house ssrs at: i) state: (statusString at: (i + 1)); ssrTimestamp: (DateAndTime now) ].
+	(statusString size = 10) ifTrue: [  
+		1 to: 8 do: 
+		[ :i | (house ssrs at: i) state: (statusString at: (i + 1)); ssrTimestamp: (DateAndTime now) ]].
 	
 	currentsString := serialController currents asString.
-	(currentsString substrings: ',') withIndexDo: [ :s :i | house currents at: i put: (s asNumber)  ]
+	(currentsString last = Character lf) ifTrue: [ 
+	(currentsString substrings: ',') withIndexDo: [ :s :i | house currents at: i put: (s asNumber) ]]
 ]
 
 { #category : #accessing }

@@ -13,7 +13,8 @@ Class {
 { #category : #initialization }
 MaSSR >> initialize [
 
-	ssrTimestamp := DateAndTime now
+	ssrTimestamp := DateAndTime now.
+	state := '?'
 	
 ]
 
