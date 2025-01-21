@@ -146,12 +146,13 @@ MaHouseApp >> readSerial [
 	| statusString currentsString |
 	
 	statusString := serialController status asString.
-	(statusString size = 10) ifTrue: [  
+	((statusString size = 10) and: [ statusString last = Character lf ]) ifTrue: [  
 		1 to: 8 do: 
 		[ :i | (house ssrs at: i) state: (statusString at: (i + 1)); ssrTimestamp: (DateAndTime now) ]].
 	
 	currentsString := serialController currents asString.
-	(currentsString last = Character lf) ifTrue: [ 
+	((currentsString last = Character lf) and: [currentsString  ])
+	ifTrue: [ 
 	(currentsString substrings: ',') withIndexDo: [ :s :i | house currents at: i put: (s asNumber) ]]
 ]
 
