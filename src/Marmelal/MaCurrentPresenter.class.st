@@ -1,18 +1,16 @@
 Class {
-	#name : 'MaCurrentPresenter',
-	#superclass : 'SpPresenter',
+	#name : #MaCurrentPresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'name',
 		'phaseA',
 		'phaseB',
 		'phaseC'
 	],
-	#category : 'Marmelal-Spec',
-	#package : 'Marmelal',
-	#tag : 'Spec'
+	#category : 'Marmelal-Spec'
 }
 
-{ #category : 'specs' }
+{ #category : #specs }
 MaCurrentPresenter class >> defaultSpec [
 	^SpBoxLayout newVertical 
 		add: #name;
@@ -21,7 +19,7 @@ MaCurrentPresenter class >> defaultSpec [
 		add: #phaseC
 ]
 
-{ #category : 'layout' }
+{ #category : #layout }
 MaCurrentPresenter >> defaultLayout [
 	^SpBoxLayout newVertical 
 		add: #name;
@@ -30,7 +28,7 @@ MaCurrentPresenter >> defaultLayout [
 		add: #phaseC
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 MaCurrentPresenter >> initializePresenters [ 
 	name := self newLabel.
 	phaseA := self newLabel.
@@ -38,42 +36,42 @@ MaCurrentPresenter >> initializePresenters [
 	phaseC := self newLabel.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaCurrentPresenter >> name [
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaCurrentPresenter >> name: anObject [
 	name := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaCurrentPresenter >> phaseA [
 	^ phaseA
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaCurrentPresenter >> phaseA: anObject [
 	phaseA := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaCurrentPresenter >> phaseB [
 	^ phaseB
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaCurrentPresenter >> phaseB: anObject [
 	phaseB := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaCurrentPresenter >> phaseC [
 	^ phaseC
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MaCurrentPresenter >> phaseC: anObject [
 	phaseC := anObject
 ]
