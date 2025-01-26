@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'port'
 	],
-	#category : 'Marmelal-Comms'
+	#category : #'Marmelal-Comms'
 }
 
 { #category : #connection }
@@ -22,8 +22,8 @@ MaSerialController >> currents [
 	"receive currents"
 	port readByteArray.  "empty input"
 	port nextPutAll: (ByteArray with: $I asInteger with: 10).
-	50 milliSeconds wait.
-	^(port readByteArray: 100) allButFirst
+	70 milliSeconds wait.
+	^(port readByteArray: 100)
 ]
 
 { #category : #'instance creation' }
@@ -43,7 +43,7 @@ MaSerialController >> status [
 	"receive status string"
 	port readByteArray.  "empty input"
 	port nextPutAll: (ByteArray with: $S asInteger with: 10).
-	50 milliSeconds wait.
+	70 milliSeconds wait.
 	^(port readByteArray: 100).
 ]
 
