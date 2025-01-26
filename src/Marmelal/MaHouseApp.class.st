@@ -152,7 +152,7 @@ MaHouseApp >> readSerial [
 	
 	currentsString := serialController currents asString.
 	(currentsString matchesRegex: 'I\d?\d\.\d\,\d?\d\.\d\,\d?\d\.\d\n') ifTrue: [ 
-	(currentsString substrings: ',') withIndexDo: [ :s :i | house currents at: i put: (s asNumber) ]]
+	(currentsString allButFirst substrings: ',') withIndexDo: [ :s :i | house currents at: i put: (s asNumber) ]]
 ]
 
 { #category : #accessing }
