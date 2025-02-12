@@ -27,6 +27,7 @@ Class {
 		'housePresenter',
 		'mqttListener',
 		'mqttBroker',
+		'mqttProcess',
 		'webserver'
 	],
 	#category : #'Marmelal-Spec'
@@ -56,6 +57,21 @@ MaHouseApp >> baudRate [
 MaHouseApp >> baudRate: anObject [
 
 	baudRate := anObject
+]
+
+{ #category : #'as yet unclassified' }
+MaHouseApp >> checkTimestamps [
+
+	| now count |
+	
+	now := DateAndTime now.
+	count := 0.
+	1 to: 5 do: [ :i |
+		now - (house floors at: i) tempTimestamp > 11 minutes ifTrue: [ count := count + 1]].
+	"letś say that 2 or more signifies an error.
+	The cause could be the mqtt loop so we simple restart"
+	count > 1 ifTrue: [ self startMQTTListener  ]
+
 ]
 
 { #category : #'as yet unclassified' }
@@ -205,12 +221,21 @@ MaHouseApp >> startCycle [
 ]
 
 { #category : #'as yet unclassified' }
+MaHouseApp >> startMQTTChecker [
+	
+	scheduler do:
+		[ self checkTimestamps ]
+		every: 12 minutes
+]
+
+{ #category : #'as yet unclassified' }
 MaHouseApp >> startMQTTListener [
+	mqttProcess ifNotNil: [ mqttProcess terminate ].
 	mqttListener := MQTTClient url: mqttBroker.
 	mqttListener timeout: 70.
 	mqttListener open.
 	mqttListener subscribeToTopic: 'floors/+'.
-	[mqttListener runWith: [ :message | self processMessage: message] ] forkNamed: 'MQTTLoop'
+	mqttProcess := [mqttListener runWith: [ :message | self processMessage: message] ] forkNamed: 'MQTTLoop'
 ]
 
 { #category : #startup }
