@@ -11,7 +11,7 @@ Class {
 		'ename',
 		'tempTimestamp'
 	],
-	#category : 'Marmelal-Core'
+	#category : #'Marmelal-Core'
 }
 
 { #category : #'as yet unclassified' }
@@ -98,6 +98,18 @@ MaFloor >> readSetpointFileBinary [
 	setpoints := t withIndexSelect: [ :a :i | ((i \\3) ~= 1) ]. "skip the hour indicator"
 	setpoints := setpoints collect: [  :v | v asNumber ]
 	"we should do some check, e.g setpoins size = 48"
+]
+
+{ #category : #accessing }
+MaFloor >> setAsString [
+	"return the temperaaure as string with one decimal placeAtEnd 
+	can also be 'not connected (- ), 'kortsluiting' of 'geen meting'
+	(based on timestamp"
+	| setpoint timeIndex|
+	
+	timeIndex := (DateAndTime now secondsSinceMidnightLocalTime // 1800 ) + 1.
+	setpoint := setpoints at: timeIndex.
+	^ setpoint printShowingDecimalPlaces: 0
 ]
 
 { #category : #accessing }
