@@ -112,7 +112,7 @@ MaHouseApp >> initialize [
 	scheduler start.
 	
 	house := MaHouse new..
-	10 seconds wait.
+	1 seconds wait.
 	" self startSerial." 
 
 ]
